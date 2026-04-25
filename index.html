@@ -10,21 +10,12 @@
       name="google-site-verification"
       content="5TWHIRnfz_zSVrZGOkTaSA27AurBwtIY-yxdCkcMGMk"
     />
-    <!-- GitHub Pages SPA: 404.htmlからのリダイレクトを処理 -->
+    <!-- GitHub Pages SPA: 404.htmlからの ?/path クエリをパスに復元 -->
     <script>
-      (function() {
-        var redirect = sessionStorage.redirect;
-        delete sessionStorage.redirect;
-        if (redirect && redirect !== location.href) {
-          history.replaceState(null, null, redirect);
-        }
-      })();
-
-      // クエリパラメータによるパス復元
       (function(l) {
-        if (l.search[1] === '/' ) {
+        if (l.search[1] === '/') {
           var decoded = l.search.slice(1).split('&').map(function(s) {
-            return s.replace(/~and~/g, '&')
+            return s.replace(/~and~/g, '&');
           });
           window.history.replaceState(
             null, null,
@@ -33,7 +24,7 @@
             l.hash
           );
         }
-      }(window.location))
+      }(window.location));
     </script>
     <script
       async
